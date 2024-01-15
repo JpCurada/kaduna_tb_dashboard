@@ -141,13 +141,14 @@ def show_gender_age_tb_bar(year_quarter):
     filtered_df = aggregated_df[aggregated_df["Year_Quarter"] == year_quarter]
 
     # Create the grouped bar chart
+    chart_title = f"Distribution of Age Groups by Gender in all LGAs for {year_quarter} (2019-2023)<br><sup>Data Source: block2b</sup>"
     fig = px.bar(
         filtered_df,
         x='Age_Group',
         y='Values',
         color='Sex',
         barmode='group',
-        title=f"Distribution of Age Groups by Gender in all LGAs for {year_quarter}<br><sup>Data from 2019 to 2023 of block2b</sup>",
+        title=chart_title,
     )
 
     # Customize the layout
