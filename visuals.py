@@ -14,7 +14,7 @@ geodf = block1a.merge(shapes, left_on='LGA', right_on='ADM2_EN', how='left')
 geodf = gpd.GeoDataFrame(geodf)
 
 block2b =  pd.read_csv('block2b_19_to_23.csv', index_col=0)
-#block2b = block2b.rename(columns={"14-May":"5-14"})
+block2b = block2b.rename(columns={"14-May":"5-14"})
 
 kaduna_lgas = block1a['LGA'].unique()
 
@@ -147,7 +147,7 @@ def show_gender_age_tb_bar(year_quarter):
         y='Values',
         color='Sex',
         barmode='group',
-        title=f"Distribution of Age Groups by Gender in all LGAs for {year_quarter}<br><sup>Data from 2021 to 2023 of block2b</sup>",
+        title=f"Distribution of Age Groups by Gender in all LGAs for {year_quarter}<br><sup>Data from 2019 to 2023 of block2b</sup>",
     )
 
     # Customize the layout
