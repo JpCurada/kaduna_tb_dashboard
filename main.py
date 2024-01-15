@@ -23,12 +23,12 @@ year_quarter_options = [
 ]
 
 year_quarter = st.select_slider('Year and Quarter', options=year_quarter_options)
-selected_year = int(year_quarter.split(" ")[0])
-adjusted_year_quarter = "2021 Q1" if selected_year < 2021 else year_quarter
+# selected_year = int(year_quarter.split(" ")[0])
+# adjusted_year_quarter = "2021 Q1" if selected_year < 2021 else year_quarter
 
 c1, c2 = st.columns(2)
 c1.plotly_chart(show_choropleth_for_number_of_diagnosed(year_quarter), use_container_width=True)
-c2.plotly_chart(show_gender_age_tb_bar(adjusted_year_quarter), use_container_width=True)
+c2.plotly_chart(show_gender_age_tb_bar(year_quarter), use_container_width=True)
 
 lga_choice = st.selectbox(
     'Select a Kaduna LGA',
