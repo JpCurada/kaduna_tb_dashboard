@@ -95,7 +95,7 @@ def show_choropleth_for_number_of_diagnosed(year_quarter):
         sliced_geodf,
         geojson=sliced_geodf.geometry,
         locations=sliced_geodf.index,
-        color='Examined for diagnosis',
+        color='Total diagnosed',
         hover_name='ADM2_EN',
         color_continuous_scale='PuBu',
         projection="mercator",
