@@ -13,7 +13,7 @@ c_lon = 7.7095
 geodf = block1a.merge(shapes, left_on='LGA', right_on='ADM2_EN', how='left')
 geodf = gpd.GeoDataFrame(geodf)
 
-block2b =  pd.read_csv('block2b_19_to_23.csv', index_col=0)
+block2b =  pd.read_csv('block2b_19_to_23.csv')
 block2b = block2b.rename(columns={"14-May":"5-14"})
 
 kaduna_lgas = block1a['LGA'].unique()
