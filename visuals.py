@@ -15,7 +15,10 @@ geodf = gpd.GeoDataFrame(geodf)
 
 block2b =  pd.read_csv('block2b_19_to_23.csv')
 
+# Forecasted df
 grouped_df = pd.read_csv("total_tb_notified_with_predicted.csv")
+
+tb_cluster = pd.read_csv("tb_cases_cluster_data.csv")
 
 kaduna_lgas = block1a['LGA'].unique()
 
@@ -183,6 +186,23 @@ def create_tb_cases_plot():
                       yaxis_title='Total TB Cases')
 
     return fig
+
+def create_tb_scatter_plot(year_quarter):
+    # Filter data for the specified year and quarter
+    filtered_data = tb_cluster[tb_cluster['Year_Quarter'] == year_quarter]
+
+    # Create scatter plot using Plotly Express
+    fig = px.scatter(filtered_data, x='PTB Cases', y='EPTB Cases', color="Cluster", size="Total TB Cases", hover_data=['LGA'],
+                     title=f'LGA Clusters for TB Activity on {year_quarter}',
+                     labels={'EPTB Cases': 'EPTB Cases', 'Total TB Cases': 'Total TB Cases', 'PTB Cases': 'PTB Cases'},
+                     color_continuous_scale='viridis',
+                     size_max=30,
+                     )
+
+    fig.update_layout(coloraxis_showscale=False)
+
+    # Show the plot
+    fig.show()
 
 # Call the function to get the figure
 resulting_fig = create_tb_cases_plot()
