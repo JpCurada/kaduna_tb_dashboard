@@ -15,6 +15,8 @@ st.caption("""
 Welcome to the Kaduna State Tuberculosis Dashboard, designed to provide comprehensive insights into the Tuberculosis (TB) situation in Kaduna State, Nigeria. This dashboard leverages interactive visualizations and data analytics to enhance understanding and awareness of TB trends over the years.
 Explore the prevalence of TB across various age groups, genders, and local government areas (LGAs) in Kaduna State. Analyze presumptive and diagnosed TB cases, track trends over time, and gain valuable insights into the distribution of cases within the region.""")
 
+st.plotly_chart(create_tb_cases_plot(), use_container_width=True)
+
 # Display the selected year and quarter
 year_quarter_options = [
     '2019 Q1', '2019 Q2', '2019 Q3', '2019 Q4', '2020 Q1', '2020 Q2',
@@ -26,7 +28,7 @@ year_quarter = st.select_slider('Year and Quarter', options=year_quarter_options
 # selected_year = int(year_quarter.split(" ")[0])
 # adjusted_year_quarter = "2021 Q1" if selected_year < 2021 else year_quarter
 
-st.plotly_chart(create_tb_cases_plot(), use_container_width=True)
+
 
 c1, c2 = st.columns(2)
 c1.plotly_chart(show_choropleth_for_number_of_diagnosed(year_quarter), use_container_width=True)
