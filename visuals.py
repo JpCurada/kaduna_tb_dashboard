@@ -160,3 +160,30 @@ def show_gender_age_tb_bar(year_quarter):
 
     return fig
 
+def create_tb_cases_plot():
+    fig = go.Figure()
+
+    # Full line for all years
+    fig.add_scattergl(x=grouped_df['Year_Quarter_'], 
+                      y=grouped_df['Total TB Cases notified Actual and Forecast'], 
+                      line={'color': 'blue'},
+                      showlegend=False)  # Set showlegend to False
+
+    # Above threshold line for the year 2024
+    fig.add_scattergl(x=grouped_df['Year_Quarter_'][grouped_df['Year_Quarter_'].str.split(" ", expand=True)[0] == '2024'], 
+                      y=grouped_df['Total TB Cases notified Actual and Forecast'][grouped_df['Year_Quarter_'].str.split(" ", expand=True)[0] == '2024'], 
+                      line={'color': 'red'},
+                      showlegend=False)  # Set showlegend to False
+
+    # Customize the layout
+    fig.update_layout(title='Total TB Cases Notified and Predicted for 2024 for Kaduna State',
+                      xaxis_title='Year and Quarter',
+                      yaxis_title='Total TB Cases')
+
+    return fig
+
+# Call the function to get the figure
+resulting_fig = create_tb_cases_plot()
+
+# Show the plot
+resulting_fig.show()
