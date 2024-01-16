@@ -204,8 +204,4 @@ def create_tb_scatter_plot(year_quarter):
     # Show the plot
     fig.show()
 
-# Call the function to get the figure
-resulting_fig = create_tb_cases_plot()
 
-# Show the plot
-resulting_fig.show()
