@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from visuals import plot_lga_presumptive_cases_trend, plot_lga_diagnosed_tb_cases_trend, show_choropleth_for_number_of_diagnosed, show_gender_age_tb_bar, kaduna_lgas, create_tb_cases_plot
+from visuals import plot_lga_presumptive_cases_trend, plot_lga_diagnosed_tb_cases_trend, show_choropleth_for_number_of_diagnosed, show_gender_age_tb_bar, kaduna_lgas, create_tb_cases_plot, create_tb_scatter_plot
 
 st.set_page_config(page_title="Kaduna TB Dashboard", 
                    page_icon=None, 
@@ -30,9 +30,10 @@ year_quarter = st.select_slider('Year and Quarter', options=year_quarter_options
 
 
 
-c1, c2 = st.columns(2)
+c1, c2, c3 = st.columns(3)
 c1.plotly_chart(show_choropleth_for_number_of_diagnosed(year_quarter), use_container_width=True)
 c2.plotly_chart(show_gender_age_tb_bar(year_quarter), use_container_width=True)
+c3.plotly_chart(create_tb_scatter_plot(year_quarter), use_container_width=True)
 
 lga_choice = st.selectbox(
     'Select a Kaduna LGA',
