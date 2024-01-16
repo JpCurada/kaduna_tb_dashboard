@@ -202,6 +202,6 @@ def create_tb_scatter_plot(year_quarter):
     fig.update_layout(coloraxis_showscale=False)
 
     # Show the plot
-    fig.show()
+    return fig
 
 
