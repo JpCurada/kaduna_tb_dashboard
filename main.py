@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from visuals import plot_lga_presumptive_cases_trend, plot_lga_diagnosed_tb_cases_trend, show_choropleth_for_number_of_diagnosed, show_gender_age_tb_bar, kaduna_lgas
+from visuals import plot_lga_presumptive_cases_trend, plot_lga_diagnosed_tb_cases_trend, show_choropleth_for_number_of_diagnosed, show_gender_age_tb_bar, kaduna_lgas, create_tb_cases_plot
 
 st.set_page_config(page_title="Kaduna TB Dashboard", 
                    page_icon=None, 
@@ -25,6 +25,8 @@ year_quarter_options = [
 year_quarter = st.select_slider('Year and Quarter', options=year_quarter_options)
 # selected_year = int(year_quarter.split(" ")[0])
 # adjusted_year_quarter = "2021 Q1" if selected_year < 2021 else year_quarter
+
+st.plotly_chart(create_tb_cases_plot(), use_container_width=True)
 
 c1, c2 = st.columns(2)
 c1.plotly_chart(show_choropleth_for_number_of_diagnosed(year_quarter), use_container_width=True)
