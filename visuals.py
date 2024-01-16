@@ -15,6 +15,8 @@ geodf = gpd.GeoDataFrame(geodf)
 
 block2b =  pd.read_csv('block2b_19_to_23.csv')
 
+grouped_df = pd.read_csv("total_tb_notified_with_predicted")
+
 kaduna_lgas = block1a['LGA'].unique()
 
 def plot_lga_presumptive_cases_trend(lga_name):
