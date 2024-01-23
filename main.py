@@ -29,7 +29,7 @@ year_quarter_options = [
     '2022 Q1', '2022 Q2', '2022 Q3', '2022 Q4', '2023 Q1', '2023 Q2',
     '2023 Q3', '2023 Q4']
 
-st.subheader("Quarterly Viewpoint")
+st.subheader('Quarterly Viewpoint', divider='gray')
 
 year_quarter = st.select_slider('Year and Quarter', options=year_quarter_options)
 
@@ -39,7 +39,7 @@ c2.plotly_chart(show_gender_age_tb_bar(year_quarter), use_container_width=True)
 
 st.plotly_chart(create_tb_scatter_plot(year_quarter), use_container_width=True)
 
-st.subheader("Local Area Perspective")
+st.subheader('Local Area Perspective', divider='gray')
 
 lga_choice = st.selectbox(
     'Select a Kaduna LGA',
