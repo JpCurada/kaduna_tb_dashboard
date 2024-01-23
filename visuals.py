@@ -5,13 +5,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 block1a = pd.read_csv("datasets/block1a_19_to_23_complete.csv", index_col=0)
+block2a = pd.read_csv("datasets/block2a_19_to_23_complete.csv", index_col=0)
 block2b =  pd.read_csv('datasets/block2b_19_to_23_complete.csv')
+
 
 # Read the shapefile
 shapes = gpd.read_file("./nga_adm_osgof_20190417/nga_admbnda_adm2_osgof_20190417.shp")
 c_lat = 10.3764
 c_lon = 7.7095
-geodf = block1a.merge(shapes, left_on='LGA', right_on='ADM2_EN', how='left')
+geodf = block2a.merge(shapes, left_on='LGA', right_on='ADM2_EN', how='left')
 geodf = gpd.GeoDataFrame(geodf)
 
 
@@ -97,13 +99,13 @@ def show_choropleth_for_number_of_diagnosed(year_quarter):
         sliced_geodf,
         geojson=sliced_geodf.geometry,
         locations=sliced_geodf.index,
-        color='Total diagnosed',
+        color='Total TB Cases notified',
         hover_name='ADM2_EN',
         color_continuous_scale='PuBu',
         projection="mercator",
-        labels='Total diagnosed',
-        custom_data=['ADM2_EN', 'Total diagnosed'],  # Custom data for tooltip
-        title=f"Number of Diagnosed TB in Kaduta State for {year_quarter} <br><sup>Data from 2019 to 2023 of block1a</sup>"
+        labels='Total TB Cases notified',
+        custom_data=['ADM2_EN', 'Total TB Cases notified'],  # Custom data for tooltip
+        title=f"Total TB Cases notified in Kaduta State for {year_quarter} <br><sup>Data from 2019 to 2023 of block1a</sup>"
     )
 
     # Customize the hover template to show LGA and number of diagnosed
