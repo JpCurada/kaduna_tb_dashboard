@@ -92,7 +92,7 @@ def plot_lga_diagnosed_tb_cases_trend(lga_name):
 
 def show_choropleth_for_number_of_diagnosed(year_quarter):
     # Filter the GeoDataFrame for the specified year_quarter
-    sliced_geodf = geodf[geodf['Year_Quarter'] == year_quarter]
+    sliced_geodf = geodf[geodf['Year-Quarter'] == year_quarter]
 
     # Create a choropleth map using Plotly Express
     choropleth_fig = px.choropleth(
