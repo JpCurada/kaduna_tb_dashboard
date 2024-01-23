@@ -4,7 +4,7 @@ import geopandas as gpd
 import plotly.express as px
 import plotly.graph_objects as go
 
-block1a = pd.read_csv("datasets/block1a_19_to_23_complete.csv")
+block1a = pd.read_csv("datasets/block1a_19_to_23_complete.csv", index_col=0)
 block2b =  pd.read_csv('datasets/block2b_19_to_23_complete.csv')
 
 # Read the shapefile
