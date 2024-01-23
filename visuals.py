@@ -197,7 +197,6 @@ def create_tb_scatter_plot(year_quarter):
                      labels={'EPTB Cases': 'EPTB Cases', 'Total TB Cases notified': 'Total TB Cases', 'PTB Cases': 'PTB Cases'},
                      color_continuous_scale='viridis',
                      size_max=30,
-                     legend='full'
                      )
 
     fig.update_layout(coloraxis_showscale=False)
