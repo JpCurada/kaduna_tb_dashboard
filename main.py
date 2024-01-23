@@ -21,7 +21,8 @@ st.plotly_chart(create_tb_cases_plot(), use_container_width=True)
 year_quarter_options = [
     '2019 Q1', '2019 Q2', '2019 Q3', '2019 Q4', '2020 Q1', '2020 Q2',
     '2020 Q3', '2020 Q4', '2021 Q1', '2021 Q2', '2021 Q3', '2021 Q4',
-    '2022 Q1', '2022 Q2', '2022 Q3', '2022 Q4', '2023 Q1', '2023 Q2'
+    '2022 Q1', '2022 Q2', '2022 Q3', '2022 Q4', '2023 Q1', '2023 Q2',
+    '2023 Q3', '2023 Q4'
 ]
 
 year_quarter = st.select_slider('Year and Quarter', options=year_quarter_options)
