@@ -69,22 +69,22 @@ def plot_lga_diagnosed_tb_cases_trend(lga_name):
     """
 
     # Filter data for the chosen LGA
-    lga_data = block1a[block1a["LGA"] == lga_name]
+    lga_data = block2a[block2a["LGA"] == lga_name]
 
     # Generate the line chart with Plotly Express
     fig = px.line(
         lga_data,
-        x="Year_Quarter",
-        y="Total diagnosed",  # Rename "Total diagnosed" to be consistent with overall data frame
+        x="Year-Quarter",
+        y="Total TB Cases notified",  # Rename "Total diagnosed" to be consistent with overall data frame
         markers=True,
         line_shape="linear",
-        title=f"Diagnosed TB Cases Trend in {lga_name}<br><sup>Data from 2019 to 2023 of block1a</sup>",
+        title=f"Diagnosed TB Cases Trend in {lga_name}<br><sup>Data from 2019 to 2023 of block2a</sup>",
     )
 
     # Customize the chart layout for clarity
     fig.update_layout(
         xaxis_title="Year and Quarter",
-        yaxis_title="Number of Diagnosed TB Cases",  # Rename y-axis title to match variable name
+        yaxis_title="Total TB Cases notified",  # Rename y-axis title to match variable name
     )
 
     return fig
