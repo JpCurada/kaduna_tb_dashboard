@@ -204,4 +204,93 @@ def create_tb_scatter_plot(year_quarter):
     # Show the plot
     return fig
 
+def plot_quarterly_tb_cases():
 
+    quarterly_tb_cases = block2a.groupby('Quarter', as_index=False)['Total TB Cases notified'].sum()
+
+    # Generate the bar chart with Plotly Express
+    fig = px.bar(
+        quarterly_tb_cases,
+        x="Quarter",
+        y="Total TB Cases notified",
+        title=f"How many TB cases occur per quarter?<br><sup>Data from 2019 to 2023 of block2a</sup>",
+        labels={"Total TB Cases notified": "Total Cases"},
+    )
+
+    # Customize the chart layout for clarity
+    fig.update_layout(
+        xaxis_title="Year and Quarter",
+        yaxis_title="Total TB Cases notified",
+        showlegend=False,  # If you don't need a legend
+    )
+
+    fig.update_layout(
+        xaxis = dict(
+            tickmode = 'array',
+            tickvals = [1, 2, 3, 4],
+            ticktext = [1, 2, 3, 4]
+        )
+    )
+
+    return fig
+
+def plot_total_lga_tb_cases():
+   """
+   Calculates and plots the total TB cases notified for each LGA,
+   highlighting those with the highest recorded cases.
+   """
+
+   # Calculate total TB cases per LGA, sort in descending order, and get the top 5
+   total_tb_cases_per_lga = block2a.groupby('LGA', as_index=False)['Total TB Cases notified'].sum()
+   top5_lga_tb_cases = total_tb_cases_per_lga.nlargest(5, 'Total TB Cases notified').sort_values(by='Total TB Cases notified', ascending=True)
+
+
+   # Create the horizontal bar chart with Plotly Express
+   fig = px.bar(
+       top5_lga_tb_cases,
+       y="LGA",
+       x="Total TB Cases notified",
+       title="LGAs with Highest Recorded TB Cases<br><sup>Data from 2019 to 2023 of block2a</sup>",
+       labels={"Total TB Cases notified": "Total Cases"},
+       orientation="h",  # Set orientation to horizontal
+   )
+
+   # Customize the chart layout for clarity
+   fig.update_layout(
+       yaxis_title="LGA",
+       xaxis_title="Total TB Cases Notified",
+       showlegend=False,  # Remove unnecessary legend
+   )
+   
+
+   return fig
+
+def plot_yearly_tb_cases():
+
+    yearly_tb_cases = block2a.groupby('Year', as_index=False)['Total TB Cases notified'].sum()
+
+    # Generate the line chart with Plotly Express
+    fig = px.line(
+        yearly_tb_cases,
+        x="Year",
+        y="Total TB Cases notified",
+        markers=True,
+        line_shape="linear",
+        title=f"How many TB cases occur per year?<br><sup>Data from 2019 to 2023 of block2a</sup>",
+    )
+
+    # Customize the chart layout for clarity
+    fig.update_layout(
+        xaxis_title="Year and Quarter",
+        yaxis_title="Total TB Cases notified",
+    )
+
+    fig.update_layout(
+        xaxis = dict(
+            tickmode = 'array',
+            tickvals = [2019, 2020, 2021, 2022, 2023],
+            ticktext = [2019, 2020, 2021, 2022, 2023]
+        )
+    )
+
+    return fig
