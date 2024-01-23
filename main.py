@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from visuals import plot_lga_presumptive_cases_trend, plot_lga_diagnosed_tb_cases_trend, show_choropleth_for_number_of_diagnosed, show_gender_age_tb_bar, kaduna_lgas, create_tb_cases_plot, create_tb_scatter_plot
+from visuals import plot_lga_presumptive_cases_trend, plot_lga_diagnosed_tb_cases_trend, show_choropleth_for_number_of_diagnosed, show_gender_age_tb_bar, kaduna_lgas, create_tb_cases_plot, create_tb_scatter_plot, plot_yearly_tb_cases, plot_quarterly_tb_cases, plot_total_lga_tb_cases
 
 st.set_page_config(page_title="Kaduna TB Dashboard", 
                    page_icon=None, 
@@ -16,6 +16,11 @@ Welcome to the Kaduna State Tuberculosis Dashboard, designed to provide comprehe
 Explore the prevalence of TB across various age groups, genders, and local government areas (LGAs) in Kaduna State. Analyze presumptive and diagnosed TB cases, track trends over time, and gain valuable insights into the distribution of cases within the region.""")
 
 st.plotly_chart(create_tb_cases_plot(), use_container_width=True)
+
+column1, column2, column3 = st.columns(3)
+column1.plotly_chart(plot_total_lga_tb_cases(), use_container_width=True)
+column2.plotly_chart(plot_yearly_tb_cases(), use_container_width=True)
+column3.plotly_chart(plot_quarterly_tb_cases(), use_container_width=True)
 
 # Display the selected year and quarter
 year_quarter_options = [
