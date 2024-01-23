@@ -192,9 +192,9 @@ def create_tb_scatter_plot(year_quarter):
     filtered_data = tb_cluster[tb_cluster['Year_Quarter'] == year_quarter]
 
     # Create scatter plot using Plotly Express
-    fig = px.scatter(filtered_data, x='PTB Cases', y='EPTB Cases', color="Cluster", size="Total TB Cases", hover_data=['LGA'],
+    fig = px.scatter(filtered_data, x='PTB Cases', y='EPTB Cases', color="Cluster", size="Total TB Cases notified", hover_data=['LGA'],
                      title=f'LGA Clusters for TB Activity on {year_quarter}',
-                     labels={'EPTB Cases': 'EPTB Cases', 'Total TB Cases': 'Total TB Cases', 'PTB Cases': 'PTB Cases'},
+                     labels={'EPTB Cases': 'EPTB Cases', 'Total TB Cases notified': 'Total TB Cases', 'PTB Cases': 'PTB Cases'},
                      color_continuous_scale='viridis',
                      size_max=30,
                      )
